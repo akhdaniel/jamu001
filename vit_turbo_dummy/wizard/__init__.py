@@ -1,0 +1,1 @@
+from . import dummy_account_move

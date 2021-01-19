@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="account_move_export" model="ir.ui.view">
+            <field name="name">account.move_export</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+
+                <notebook position="inside">
+                    <page string="Turbo Export">
+                        <group>
+                            <group>
+                                <field name="is_exported"/>
+                            </group>
+                            <group>
+                                <field name="date_exported"/>
+                            </group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+
+
+    </data>
+</openerp>
+

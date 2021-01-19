@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="act_open_vit_export_account_move_wizard" model="ir.actions.act_window">
+            <field name="name">Export Account Move</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vit.export_account_move</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="view_vit_export_account_move_form" model="ir.ui.view">
+            <field name="name">view_vit_export_account_move_form</field>
+            <field name="model">vit.export_account_move</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Export account_move" version="7.0">
+                    <p>
+                        Klik tombol Export di bawah untuk mulai export data Journal Entries.
+                        Data yang diexport adalah account_move yang belum diexport.
+                    </p>
+
+                    <p>
+                        Setelah proses export Journal Entries selesai dilakukan, klik Export file untuk mendownload file CSV.
+                    </p>
+                    <p>
+                        <group>
+                            <group>
+                                <field name="journal_id"/>
+                                <field name="partner_id"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="state"/>
+                            </group>
+                            <group>
+                                <!-- <field name="total_records"/> -->
+                                <field name="total_durations"/>
+                                <field name="export_file" readonly="1" filename="export_filename"/>
+                                <field name="export_filename" invisible="1" />
+                            </group>
+                        </group>
+
+                        <!-- <a href="/vit_export/static/account_move.csv">
+                            <img src="/vit_export/static/src/img/export.png"/>
+                            <b>account_move.csv</b>
+                        </a> -->
+                    </p>
+
+                    <footer>
+                        <button string="Export" name="confirm_button" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" />
+                    </footer>
+
+                </form>
+            </field>
+        </record>
+
+        <menuitem id="menu_vit_export_account_move"
+                  parent="accounting_pdf_reports.menu_finance_legal_statement"
+                  sequence="40"
+                  name="Export Account Moves"
+                  action="act_open_vit_export_account_move_wizard"/>
+
+    </data>
+</openerp>
